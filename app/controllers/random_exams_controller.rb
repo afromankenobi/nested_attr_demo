@@ -20,6 +20,11 @@ class RandomExamsController < ApplicationController
 
   # GET /random_exams/1/edit
   def edit
+    @random_exam
+      .random_exam_sections
+      .build(
+        Section.where.not(id: @random_exam.section_ids).map{|s| {section_id: s.id}}
+      )
   end
 
   # POST /random_exams
