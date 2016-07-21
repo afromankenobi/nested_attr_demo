@@ -1,0 +1,1 @@
+json.partial! "random_exams/random_exam", random_exam: @random_exam

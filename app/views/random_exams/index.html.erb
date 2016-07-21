@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Random Exams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @random_exams.each do |random_exam| %>
+      <tr>
+        <td><%= random_exam.name %></td>
+        <td><%= link_to 'Show', random_exam %></td>
+        <td><%= link_to 'Edit', edit_random_exam_path(random_exam) %></td>
+        <td><%= link_to 'Destroy', random_exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Random Exam', new_random_exam_path %>

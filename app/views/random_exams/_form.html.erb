@@ -1,0 +1,32 @@
+<%= form_for(random_exam) do |f| %>
+  <% if random_exam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(random_exam.errors.count, "error") %> prohibited this random_exam from being saved:</h2>
+
+      <ul>
+      <% random_exam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <h4>Selected exams</h4>
+  <%= f.fields_for :random_exam_sections do |b| %>
+    <%= b.hidden_field :section_id %>
+    <%= b.label :selected, b.object.section.name %>
+    <%= b.check_box :selected, { checked: !b.object.id.blank? } %>
+    <br>
+    <%= b.label :question_numbers %>
+    <%= b.text_field :questions_number %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
